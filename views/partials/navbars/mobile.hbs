@@ -1,0 +1,36 @@
+<ul id="nav-mobile" hidden>
+    {{#if isEmpty}}
+
+    {{else}}
+        <li>
+            <a class = "selectAllBtn">
+                <i class="material-icons"
+                    {{#if allCompleted}}
+                   title="Deselect all">
+                       check_box_outline_blank
+                    {{else}}
+                        title="Select all">
+                        check
+                    {{/if}}
+                </i>
+            </a>
+        </li>
+        <li>
+            <a class = "sortCompletedBtn" title="Sort by completion">
+                <i class="material-icons">
+                    sort
+                </i>
+            </a>
+        </li>
+        {{#if atLeastOneCompleted}}
+            <li>
+                <a class = "deletedSelectedBtn" title="Delete completed todos">
+                    <i class="material-icons">
+                        delete
+                    </i>
+                </a>
+            </li>
+        {{/if}}
+        <li>{{> commands/create }}</li>
+    {{/if}}
+</ul>

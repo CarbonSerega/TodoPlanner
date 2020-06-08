@@ -1,0 +1,12 @@
+<script>
+    $(document).ready(() => {
+        $('.deletedSelectedBtn').click(() => {
+            $.ajax({
+                url: '/delete/selected',
+                type: 'post',
+                success: () => location.replace('/'),
+                error: (msg) => console.log("Error: " + msg)
+            })
+        })
+    })
+</script>

@@ -1,0 +1,31 @@
+<script>
+    $(document).ready(() => alignNavBarItems())
+    $(window).resize(() => alignNavBarItems())
+
+    function alignNavBarItems() {
+        const mobile = $('#nav-mobile')
+        const desktop = $('#nav-desktop')
+        if(window.innerWidth < 1000) {
+            mobile.attr('hidden', false)
+            desktop.attr('hidden', true)
+        }
+        else {
+            mobile.attr('hidden', true)
+            desktop.attr('hidden', false)
+        }
+    }
+</script>
+
+<div class="navbar-fixed">
+    <nav style="cursor: pointer" onclick="window.scrollTo(0, 0)">
+        <div class="nav-wrapper">
+            {{> commands/select_all }}
+            {{> commands/sort_completed}}
+            {{> commands/delete_selected }}
+
+            {{> navbars/desktop }}
+            {{> navbars/mobile }}
+        </div>
+    </nav>
+</div>
+

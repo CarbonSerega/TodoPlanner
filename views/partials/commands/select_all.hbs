@@ -1,0 +1,12 @@
+<script>
+    $(document).ready(() => {
+        $('.selectAllBtn').click(() => {
+            $.ajax({
+                url: '/complete/all',
+                type: 'post',
+                success: () => location.replace('/'),
+                error: (msg) => console.log("Error: " + msg)
+            })
+        })
+    })
+</script>

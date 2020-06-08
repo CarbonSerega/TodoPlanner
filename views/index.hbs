@@ -1,0 +1,73 @@
+<script>
+    $(document).ready(() => {
+        let ch = $('#todo_list').children()
+        for (const child of ch) {
+            let cmd = child.getElementsByClassName('right-command')[0]
+            let btn = cmd.getElementsByClassName('delete-btn')[0]
+            let id = cmd.getElementsByClassName('hidden-id')[0].value
+
+            $('#'+btn.id).click(() =>
+                $.ajax({
+                    url: '/delete',
+                    type: 'post',
+                    data: {remove_id: id},
+                    success: () => location.replace('/'),
+                    error: (msg) => console.log("Error: " + msg)
+                })
+            )
+
+            let checkbox = $(`#checkbox_${id}`)
+            checkbox.change(() => {
+                document.cookie = `scroll=${window.scrollY}`
+                $.ajax({
+                    url: '/complete',
+                    type: 'post',
+                    data: {
+                        id,
+                        completed: checkbox.is(':checked'),
+                    },
+                    success: () => location.replace('/'),
+                    error: (msg) => console.log("Error: " + msg)
+                })
+            })
+
+        }
+    })
+</script>
+
+{{#if todos.length}}
+    <ul id = 'todo_list'>
+    {{#each todos}}
+        <li class="todo" style="{{#if completed }}
+        background: #eaeaea;
+        {{else}}
+        background: white;
+        {{/if}}">
+
+                <label>
+                    {{#if completed}}
+                        <input id = "checkbox_{{_id}}" class="checkbox" type="checkbox" name="completed" checked>
+                        <span class="completed">{{title}}</span>
+                    {{else}}
+                        <input id = "checkbox_{{_id}}" class="checkbox" type="checkbox" name="completed">
+                        <span>{{title}}</span>
+                    {{/if}}
+
+                    <input type="hidden" value="{{_id}}" class="hidden-id" name="id">
+                </label>
+            <br/>
+            <a style="text-align: center">
+               {{pubtime lastChange}} ago
+            </a>
+
+
+            <div class="right-aligned right-command">
+                <button id = "delete_btn_{{_id}}" class="delete-btn">{{> vector_assets/remove_todo}}</button>
+                <input type="hidden" value="{{_id}}" class="hidden-id" name="id">
+            </div>
+        </li>
+    {{/each}}
+    </ul>
+{{else}}
+    <h1>No Todos found!</h1>
+{{/if}}

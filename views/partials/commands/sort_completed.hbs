@@ -1,0 +1,12 @@
+<script>
+    $(document).ready(() => {
+        $('.sortCompletedBtn').click(() => {
+            $.ajax({
+                url: '/sort/completion',
+                type: 'post',
+                success: () => location.replace('/'),
+                error: (msg) => console.log(msg)
+            })
+        })
+    })
+</script>

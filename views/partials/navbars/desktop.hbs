@@ -1,0 +1,26 @@
+<ul id = "nav-desktop" class="hide-on-med-and-down" hidden>
+    {{#if isEmpty}}
+
+    {{else}}
+        <li>
+            <a class="selectAllBtn">
+                {{#if allCompleted}}
+                    DESELECT ALL
+                {{else}}
+                    SELECT ALL
+                {{/if}}
+            </a>
+        </li>
+        <li>
+            <a class="sortCompletedBtn">SORT BY COMPLETION</a>
+        </li>
+        {{#if atLeastOneCompleted}}
+            <li>
+                <a class="deletedSelectedBtn">DELETE COMPLETED</a>
+            </li>
+        {{/if}}
+
+    {{/if}}
+    <li>{{> commands/create }}</li>
+    <li style="float: right; margin-right:2ex; font-size: 1.5rem;">{{today}}</li>
+</ul>

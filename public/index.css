@@ -1,0 +1,90 @@
+body {
+    background: lightgray;
+    color:gray;
+}
+
+.todo {
+    margin-bottom: 1rem;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: none;
+}
+
+.todo span.completed {
+    text-decoration: line-through;
+}
+
+.todo label {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.todo a {
+    color:lightgray;
+}
+
+.todo i {
+    z-index: 1;
+}
+
+input[type="checkbox"]:checked+span:not(.lever):before {
+    border-right: lightcoral 2px solid;
+    border-bottom: lightcoral 2px solid;
+}
+
+
+.right-command button {
+    box-shadow: none;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    align-content: center;
+    padding-top:0.5rem;
+    padding-bottom: 0.3rem;
+    cursor: pointer;
+}
+.right-command button:hover {
+    background: lightgray;
+    box-shadow: none;
+}
+.right-command button:active {
+    background: #c4c4c4;
+}
+
+
+.top-commands {
+    background: none;
+    box-shadow: none;
+    outline: none;
+    border: none;
+    align-content: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color:white;
+}
+.top-commands:hover {
+    background: lightcoral;
+    box-shadow: none;
+}
+.top-commands:active {
+    background: #d4d4d4;
+}
+
+input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default), input[type=email]:not(.browser-default), input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea {
+    border-bottom:white 2px solid;
+    color:white;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+input::placeholder {
+    color:#bf4747;
+}
